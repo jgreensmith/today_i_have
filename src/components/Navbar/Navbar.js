@@ -21,7 +21,7 @@ const Navbar = () => {
             </div>
             <Toolbar className={classes.toolbar}>
                 {user ? (
-                        <Button variant="contained" className={classes.logout} color="secondary" onClick={() => logoutHandler()}>Logout</Button> 
+                        <Button variant="contained" color="secondary" onClick={() => logoutHandler()}>Logout</Button> 
                 ) : (
                     <Button component={Link} to="/auth" variant="contained" color="primary" >Sign in</Button> 
                 )}
