@@ -1,23 +1,31 @@
+import React, { useContext, useState } from 'react';
 import { Button, Paper, TextField, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
 
 import useStyles from './styles';
+import { PostContext } from '../../contexts/PostContext';
+import { ADD_POST } from '../../reducers/constants';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 const Form = () => {
     const classes = useStyles();
-    const user = true;
+    const { dispatch } = useContext(PostContext);
+    const { user } = useContext(AuthContext);
     const [title, setTitle] = useState('');
     const [message, setMessage] = useState('');
     const [tags, setTags] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch({ type: ADD_POST, post: {title, message, tags}});
+        clear();
     }
 
     const clear = () => {
-        
-    }
+        setTitle('');
+        setMessage('');
+        setTags('');
+    };
 
     return (
         <>

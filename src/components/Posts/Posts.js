@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { CircularProgress, InputBase, Grid } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 import useStyles from './styles';
 import Post from './Post/Post';
+import { PostContext } from '../../contexts/PostContext';
 
 
 const Posts = () => {
     const classes = useStyles();
-    const posts = false;
+    const { posts } = useContext(PostContext);
     const [searchTags, setSearchTags] = useState("");
 
 

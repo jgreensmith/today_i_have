@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete'; 
 import moment from 'moment';
 
 import useStyles from './styles';
+import { PostContext } from '../../../contexts/PostContext';
+import { REMOVE_POST } from '../../../reducers/constants';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 
 const Post = ({ post }) => {
     const classes = useStyles();
-    const user = false;
+    const { dispatch } = useContext(PostContext);
+    //dispatch from reducer
+    const { user } = useContext(AuthContext);
 
     return (
         <Card className={classes.card} xs={12}>
@@ -24,7 +29,7 @@ const Post = ({ post }) => {
             </CardContent>
             <CardActions className={classes.cardActions}>
                 {user &&
-                    <Button size="small" color="secondary">
+                    <Button size="small" color="secondary" onClick={() => dispatch({ type: REMOVE_POST, id: post.id})} >
                         <DeleteIcon fontSize="small" /> Delete
                     </Button>
                 }

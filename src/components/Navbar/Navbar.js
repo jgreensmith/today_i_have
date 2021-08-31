@@ -1,6 +1,7 @@
 import { AppBar, Button, Toolbar, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
 
 import useStyles from './styles';
 
@@ -8,10 +9,10 @@ import useStyles from './styles';
 
 const Navbar = () => {
     const classes = useStyles();
-    const user = false;
+    const { user, logout } = useContext(AuthContext);
 
     const logoutHandler = () => {
-
+        logout();
     };
 
     return (
