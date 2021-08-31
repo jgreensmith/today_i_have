@@ -5,13 +5,12 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 import useStyles from './styles';
 
-
-
 const Navbar = () => {
     const classes = useStyles();
     const { user, logout } = useContext(AuthContext);
 
     const logoutHandler = () => {
+        sessionStorage.clear();
         logout();
     };
 
